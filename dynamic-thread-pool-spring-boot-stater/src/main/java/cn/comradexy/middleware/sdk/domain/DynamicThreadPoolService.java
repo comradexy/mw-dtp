@@ -31,14 +31,17 @@ public class DynamicThreadPoolService implements IDynamicThreadPoolService {
         List<ThreadPoolConfigEntity> threadPoolVOs = new ArrayList<>(threadPoolNames.size());
         for (String threadPoolName : threadPoolNames) {
             ThreadPoolExecutor threadPoolExecutor = threadPoolExecutorMap.get(threadPoolName);
-            ThreadPoolConfigEntity threadPoolConfigVO = new ThreadPoolConfigEntity(appName, threadPoolName,
-                    threadPoolExecutor.getCorePoolSize(),
-                    threadPoolExecutor.getMaximumPoolSize(),
-                    threadPoolExecutor.getActiveCount(),
-                    threadPoolExecutor.getPoolSize(),
-                    threadPoolExecutor.getQueue().getClass().getSimpleName(),
-                    threadPoolExecutor.getQueue().size(),
-                    threadPoolExecutor.getQueue().remainingCapacity());
+            ThreadPoolConfigEntity threadPoolConfigVO = ThreadPoolConfigEntity.builder()
+                    .appName(appName)
+                    .threadPoolName(threadPoolName)
+                    .corePoolSize(threadPoolExecutor.getCorePoolSize())
+                    .maximumPoolSize(threadPoolExecutor.getMaximumPoolSize())
+                    .activeCount(threadPoolExecutor.getActiveCount())
+                    .poolSize(threadPoolExecutor.getPoolSize())
+                    .queueType(threadPoolExecutor.getQueue().getClass().getSimpleName())
+                    .queueSize(threadPoolExecutor.getQueue().size())
+                    .remainingCapacity(threadPoolExecutor.getQueue().remainingCapacity())
+                    .build();
             threadPoolVOs.add(threadPoolConfigVO);
         }
         return threadPoolVOs;
@@ -50,14 +53,17 @@ public class DynamicThreadPoolService implements IDynamicThreadPoolService {
         if (null == threadPoolExecutor) return new ThreadPoolConfigEntity(appName, threadPoolName);
 
         // 线程池配置数据
-        ThreadPoolConfigEntity threadPoolConfigVO = new ThreadPoolConfigEntity(appName, threadPoolName,
-                threadPoolExecutor.getCorePoolSize(),
-                threadPoolExecutor.getMaximumPoolSize(),
-                threadPoolExecutor.getActiveCount(),
-                threadPoolExecutor.getPoolSize(),
-                threadPoolExecutor.getQueue().getClass().getSimpleName(),
-                threadPoolExecutor.getQueue().size(),
-                threadPoolExecutor.getQueue().remainingCapacity());
+        ThreadPoolConfigEntity threadPoolConfigVO = ThreadPoolConfigEntity.builder()
+                .appName(appName)
+                .threadPoolName(threadPoolName)
+                .corePoolSize(threadPoolExecutor.getCorePoolSize())
+                .maximumPoolSize(threadPoolExecutor.getMaximumPoolSize())
+                .activeCount(threadPoolExecutor.getActiveCount())
+                .poolSize(threadPoolExecutor.getPoolSize())
+                .queueType(threadPoolExecutor.getQueue().getClass().getSimpleName())
+                .queueSize(threadPoolExecutor.getQueue().size())
+                .remainingCapacity(threadPoolExecutor.getQueue().remainingCapacity())
+                .build();
 
         if (logger.isDebugEnabled()) {
             logger.info("动态线程池，配置查询 应用名:{} 线程名:{} 池化配置:{}", appName, threadPoolName,

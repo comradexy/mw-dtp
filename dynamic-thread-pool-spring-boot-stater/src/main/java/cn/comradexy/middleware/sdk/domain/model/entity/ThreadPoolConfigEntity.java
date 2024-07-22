@@ -1,10 +1,7 @@
 package cn.comradexy.middleware.sdk.domain.model.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 /**
  * 线程池配置实体对象
@@ -12,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Builder
 public class ThreadPoolConfigEntity {
 
     /**
