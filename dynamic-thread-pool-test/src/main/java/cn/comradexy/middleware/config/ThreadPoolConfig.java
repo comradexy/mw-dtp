@@ -8,6 +8,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 线程池配置
+ *
+ * @Author: ComradeXY
+ * @CreateTime: 2021-07-12
+ * @Description: 线程池配置
+ */
 @Configuration
 public class ThreadPoolConfig {
     @Bean

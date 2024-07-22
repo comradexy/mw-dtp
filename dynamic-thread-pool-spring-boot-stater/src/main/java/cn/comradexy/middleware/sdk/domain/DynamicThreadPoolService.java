@@ -13,6 +13,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 动态线程池服务
+ *
+ * @Author: ComradeXY
+ * @CreateTime: 2021-07-15
+ * @Description: 动态线程池服务
  */
 public class DynamicThreadPoolService implements IDynamicThreadPoolService {
     private final Logger logger = LoggerFactory.getLogger(DynamicThreadPoolService.class);

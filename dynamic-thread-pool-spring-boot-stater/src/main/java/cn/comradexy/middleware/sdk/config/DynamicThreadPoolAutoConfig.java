@@ -12,6 +12,13 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * 动态线程池自动配置
+ *
+ * @Author: ComradeXY
+ * @CreateTime: 2021-07-15
+ * @Description: 动态线程池自动配置
+ */
 @Configuration
 public class DynamicThreadPoolAutoConfig {
     private final Logger logger = LoggerFactory.getLogger(DynamicThreadPoolAutoConfig.class);

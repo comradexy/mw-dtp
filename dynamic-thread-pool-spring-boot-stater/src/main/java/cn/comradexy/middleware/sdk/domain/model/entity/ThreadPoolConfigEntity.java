@@ -5,6 +5,10 @@ import lombok.*;
 
 /**
  * 线程池配置实体对象
+ *
+ * @Author: ComradeXY
+ * @CreateTime: 2021-07-15
+ * @Description: 线程池配置实体对象
  */
 @Data
 @AllArgsConstructor

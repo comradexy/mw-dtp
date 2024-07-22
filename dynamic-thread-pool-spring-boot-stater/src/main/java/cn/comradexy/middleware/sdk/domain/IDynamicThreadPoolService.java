@@ -6,6 +6,10 @@ import java.util.List;
 
 /**
  * 动态线程池服务
+ *
+ * @Author: ComradeXY
+ * @CreateTime: 2021-07-15
+ * @Description: 动态线程池服务
  */
 public interface IDynamicThreadPoolService {
     /**
