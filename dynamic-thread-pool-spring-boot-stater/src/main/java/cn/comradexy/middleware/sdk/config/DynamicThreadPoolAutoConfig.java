@@ -1,7 +1,12 @@
 package cn.comradexy.middleware.sdk.config;
 
 import cn.comradexy.middleware.sdk.domain.DynamicThreadPoolService;
+import cn.comradexy.middleware.sdk.registry.IRegistry;
+import cn.comradexy.middleware.sdk.registry.redis.RedisRegistry;
 import org.apache.commons.lang.StringUtils;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +27,21 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 public class DynamicThreadPoolAutoConfig {
     private final Logger logger = LoggerFactory.getLogger(DynamicThreadPoolAutoConfig.class);
+
+    @Bean("redissonClient")
+    public RedissonClient redissonClient(DynamicThreadPoolAutoProperties properties) {
+        Config config = new Config();
+        // TODO: 配置 redisson
+
+        RedissonClient redissonClient = Redisson.create(config);
+
+        return redissonClient;
+    }
+
+    @Bean
+    public IRegistry redisRegistry(RedissonClient redissonClient) {
+        return new RedisRegistry(redissonClient);
+    }
 
     @Bean("dynamicThreadPoolService")
     public DynamicThreadPoolService dynamicThreadPoolService(ApplicationContext applicationContext,
