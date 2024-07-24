@@ -1,17 +1,21 @@
 package cn.comradexy.middleware.sdk.config;
 
 import cn.comradexy.middleware.sdk.domain.DynamicThreadPoolService;
+import cn.comradexy.middleware.sdk.domain.IDynamicThreadPoolService;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import cn.comradexy.middleware.sdk.registry.redis.RedisRegistry;
+import cn.comradexy.middleware.sdk.trigger.job.ThreadPoolDataReportJob;
 import org.apache.commons.lang.StringUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 import java.util.Map;
@@ -25,10 +29,12 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @Description: 动态线程池自动配置
  */
 @Configuration
+@EnableScheduling
 public class DynamicThreadPoolAutoConfig {
     private final Logger logger = LoggerFactory.getLogger(DynamicThreadPoolAutoConfig.class);
 
     @Bean("redissonClient")
+    @ConditionalOnMissingBean(RedissonClient.class) // 未加载RedissonClient时，才会加载
     public RedissonClient redissonClient(DynamicThreadPoolAutoProperties properties) {
         Config config = new Config();
         // TODO: 配置 redisson
@@ -41,6 +47,11 @@ public class DynamicThreadPoolAutoConfig {
     @Bean
     public IRegistry redisRegistry(RedissonClient redissonClient) {
         return new RedisRegistry(redissonClient);
+    }
+
+    @Bean
+    public ThreadPoolDataReportJob threadPoolDataReportJob(IDynamicThreadPoolService dynamicThreadPoolService, IRegistry registry) {
+        return new ThreadPoolDataReportJob(dynamicThreadPoolService, registry);
     }
 
     @Bean("dynamicThreadPoolService")
