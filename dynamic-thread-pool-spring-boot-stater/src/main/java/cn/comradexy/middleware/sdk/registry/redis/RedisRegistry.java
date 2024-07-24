@@ -4,6 +4,7 @@ import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import org.redisson.api.RedissonClient;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
