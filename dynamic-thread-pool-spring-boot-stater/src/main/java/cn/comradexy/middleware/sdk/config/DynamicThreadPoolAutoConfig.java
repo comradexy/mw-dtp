@@ -112,6 +112,7 @@ public class DynamicThreadPoolAutoConfig {
             registry.reportThreadPoolConfigParameter(threadPoolConfigEntity);
         }
         registry.reportThreadPool(threadPoolConfigEntities);
+        logger.info("动态线程池，初始化完成。应用名：{} 线程池数量：{}", appName, threadPoolConfigEntities.size());
 
         return new DynamicThreadPoolService(appName, threadPoolExecutorMap);
     }
