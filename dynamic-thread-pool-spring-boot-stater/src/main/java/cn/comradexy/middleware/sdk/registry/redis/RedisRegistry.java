@@ -10,7 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Redis 注册中心
@@ -30,8 +33,10 @@ public class RedisRegistry implements IRegistry {
 
     @Override
     public void reportThreadPool(List<ThreadPoolConfigEntity> threadPoolConfigEntities) {
-        // TODO: 对threadPoolConfigEntities内的数据进行去重
-        
+        // 对threadPoolConfigEntities内的数据进行去重
+        // 使用HashSet并结合@EqualsAndHashCode(of = {"appName", "threadPoolName"})去重
+        Set<ThreadPoolConfigEntity> threadPoolConfigEntitySet = new HashSet<>(threadPoolConfigEntities);
+        threadPoolConfigEntities = new ArrayList<>(threadPoolConfigEntitySet);
 
         RList<ThreadPoolConfigEntity> list =
                 redissonClient.getList(RegistryEnumVO.THREAD_POOL_CONFIG_LIST_KEY.getKey());
@@ -41,6 +46,7 @@ public class RedisRegistry implements IRegistry {
         }
         list.delete();
         list.addAll(threadPoolConfigEntities);
+        logger.info("Redis 注册中心，上报线程池信息：{}", threadPoolConfigEntities);
     }
 
     @Override
@@ -55,6 +61,7 @@ public class RedisRegistry implements IRegistry {
         }
         // 缓存30天
         bucket.set(threadPoolConfigEntity, Duration.ofDays(30));
+        logger.info("Redis 注册中心，上报线程池配置：{}", threadPoolConfigEntity);
     }
 
 }

@@ -14,7 +14,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Builder
-//TODO: @EqualsAndHashCode(of = {"appName", "threadPoolName"})
+@EqualsAndHashCode(of = {"appName", "threadPoolName"})
 public class ThreadPoolConfigEntity {
 
     /**
