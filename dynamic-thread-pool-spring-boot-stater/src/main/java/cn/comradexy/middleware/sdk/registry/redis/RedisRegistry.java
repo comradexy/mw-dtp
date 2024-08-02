@@ -30,6 +30,9 @@ public class RedisRegistry implements IRegistry {
 
     @Override
     public void reportThreadPool(List<ThreadPoolConfigEntity> threadPoolConfigEntities) {
+        // TODO: 对threadPoolConfigEntities内的数据进行去重
+        
+
         RList<ThreadPoolConfigEntity> list =
                 redissonClient.getList(RegistryEnumVO.THREAD_POOL_CONFIG_LIST_KEY.getKey());
         if (null == list) {
