@@ -52,8 +52,8 @@ public class RedisRegistry implements IRegistry {
     @Override
     public void reportThreadPoolConfigParameter(ThreadPoolConfigEntity threadPoolConfigEntity) {
         String cacheKey = RegistryEnumVO.THREAD_POOL_CONFIG_PARAMETER_LIST_KEY.getKey() +
-                "_" + threadPoolConfigEntity.getAppName() +
-                "_" + threadPoolConfigEntity.getThreadPoolName();
+                RegistryEnumVO.CONNECTOR.getKey() + threadPoolConfigEntity.getAppName() +
+                RegistryEnumVO.CONNECTOR.getKey() + threadPoolConfigEntity.getThreadPoolName();
         RBucket<ThreadPoolConfigEntity> bucket = redissonClient.getBucket(cacheKey);
         if (null == bucket) {
             logger.error("Redis 注册中心，获取缓存对象失败。{}", cacheKey);
