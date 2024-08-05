@@ -13,6 +13,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
+@NoArgsConstructor // 为了解决jackson反序列化时，需要无参构造函数的问题
 @Builder
 @EqualsAndHashCode(of = {"appName", "threadPoolName"})
 public class ThreadPoolConfigEntity {
