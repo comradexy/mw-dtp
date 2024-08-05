@@ -74,6 +74,15 @@ public class DynamicThreadPoolAutoConfig implements ApplicationContextAware {
     }
 
     /**
+     * 监听线程池配置变更
+     */
+    @Bean
+    public ThreadPoolConfigAdjustListener threadPoolConfigAdjustListener(IDynamicThreadPoolService dynamicThreadPoolService,
+                                                                         IRegistry registry) {
+        return new ThreadPoolConfigAdjustListener(dynamicThreadPoolService, registry);
+    }
+
+    /**
      * 订阅线程池配置变更
      */
     @Bean(name = "dynamicThreadPoolRedisTopic")
