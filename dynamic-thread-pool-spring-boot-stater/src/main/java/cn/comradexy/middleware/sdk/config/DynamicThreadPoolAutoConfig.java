@@ -7,8 +7,10 @@ import cn.comradexy.middleware.sdk.domain.model.valobj.RegistryEnumVO;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import cn.comradexy.middleware.sdk.registry.redis.RedisRegistry;
 import cn.comradexy.middleware.sdk.trigger.job.ThreadPoolDataReportJob;
+import cn.comradexy.middleware.sdk.trigger.listener.ThreadPoolConfigAdjustListener;
 import org.apache.commons.lang.StringUtils;
 import org.redisson.Redisson;
+import org.redisson.api.RTopic;
 import org.redisson.api.RedissonClient;
 import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.config.Config;
@@ -69,6 +71,20 @@ public class DynamicThreadPoolAutoConfig implements ApplicationContextAware {
                 !redissonClient.isShutdown());
 
         return redissonClient;
+    }
+
+    /**
+     * 订阅线程池配置变更
+     */
+    @Bean(name = "dynamicThreadPoolRedisTopic")
+    public RTopic threadPoolConfigAdjustListener(RedissonClient redissonClient,
+                                                 ThreadPoolConfigAdjustListener threadPoolConfigAdjustListener) {
+        RTopic topic = redissonClient.getTopic(RegistryEnumVO.DYNAMIC_THREAD_POOL_REDIS_TOPIC.getKey() +
+                RegistryEnumVO.CONNECTOR.getKey() +
+                applicationName);
+        topic.addListener(ThreadPoolConfigEntity.class, threadPoolConfigAdjustListener);
+
+        return topic; // 不返回也可以，上述代码执行完就已经完成订阅了，这里返回是为了方便测试
     }
 
     @Bean
