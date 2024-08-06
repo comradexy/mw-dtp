@@ -23,7 +23,7 @@ import java.util.List;
  * @Description: 管理端controller
  */
 @RestController
-//@CrossOrigin("*")
+@CrossOrigin // TODO: CORS
 @RequestMapping("/dtp/api/")
 public class DynamicThreadPoolController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
