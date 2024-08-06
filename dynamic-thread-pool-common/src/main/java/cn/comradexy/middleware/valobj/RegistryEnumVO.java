@@ -1,4 +1,4 @@
-package cn.comradexy.middleware.sdk.domain.model.valobj;
+package cn.comradexy.middleware.valobj;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

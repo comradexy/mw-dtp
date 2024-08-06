@@ -1,4 +1,4 @@
-package cn.comradexy.middleware.sdk.domain.model.entity;
+package cn.comradexy.middleware.entity;
 
 
 import lombok.*;

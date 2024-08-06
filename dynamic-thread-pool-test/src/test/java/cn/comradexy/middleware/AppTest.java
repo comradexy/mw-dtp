@@ -1,7 +1,7 @@
 package cn.comradexy.middleware;
 
 import cn.comradexy.middleware.sdk.domain.DynamicThreadPoolService;
-import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
+import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import org.junit.Test;
 import org.junit.runner.RunWith;

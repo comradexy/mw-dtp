@@ -1,7 +1,7 @@
 package cn.comradexy.middleware.sdk.registry.redis;
 
-import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
-import cn.comradexy.middleware.sdk.domain.model.valobj.RegistryEnumVO;
+import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
+import cn.comradexy.middleware.valobj.RegistryEnumVO;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import org.redisson.api.RBucket;
 import org.redisson.api.RList;

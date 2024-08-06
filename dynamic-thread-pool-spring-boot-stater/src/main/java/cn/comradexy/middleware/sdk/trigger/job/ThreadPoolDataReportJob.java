@@ -1,7 +1,7 @@
 package cn.comradexy.middleware.sdk.trigger.job;
 
+import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
 import cn.comradexy.middleware.sdk.domain.IDynamicThreadPoolService;
-import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;

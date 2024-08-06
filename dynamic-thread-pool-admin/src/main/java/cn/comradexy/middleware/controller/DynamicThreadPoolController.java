@@ -1,8 +1,8 @@
 package cn.comradexy.middleware.controller;
 
 import cn.comradexy.middleware.model.vo.Result;
-import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
-import cn.comradexy.middleware.sdk.domain.model.valobj.RegistryEnumVO;
+import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
+import cn.comradexy.middleware.valobj.RegistryEnumVO;
 import com.alibaba.fastjson.JSON;
 import org.redisson.api.RList;
 import org.redisson.api.RTopic;

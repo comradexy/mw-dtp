@@ -2,8 +2,8 @@ package cn.comradexy.middleware.sdk.config;
 
 import cn.comradexy.middleware.sdk.domain.DynamicThreadPoolService;
 import cn.comradexy.middleware.sdk.domain.IDynamicThreadPoolService;
-import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
-import cn.comradexy.middleware.sdk.domain.model.valobj.RegistryEnumVO;
+import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
+import cn.comradexy.middleware.valobj.RegistryEnumVO;
 import cn.comradexy.middleware.sdk.registry.IRegistry;
 import cn.comradexy.middleware.sdk.registry.redis.RedisRegistry;
 import cn.comradexy.middleware.sdk.trigger.job.ThreadPoolDataReportJob;

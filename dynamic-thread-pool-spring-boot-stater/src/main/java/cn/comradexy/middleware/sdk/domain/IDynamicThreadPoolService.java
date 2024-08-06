@@ -1,6 +1,6 @@
 package cn.comradexy.middleware.sdk.domain;
 
-import cn.comradexy.middleware.sdk.domain.model.entity.ThreadPoolConfigEntity;
+import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
 
 import java.util.List;
 
