@@ -1,4 +1,4 @@
-package cn.comradexy.middleware;
+package cn.comradexy;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package cn.comradexy.middleware.config;
+package cn.comradexy.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ public class ThreadPoolConfig {
     public ThreadPoolExecutor threadPoolExecutor1() {
         return new ThreadPoolExecutor(5,
                 10,
-                60,
+                30,
                 TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(10),
                 Executors.defaultThreadFactory(),
@@ -30,8 +30,8 @@ public class ThreadPoolConfig {
 
     @Bean
     public ThreadPoolExecutor threadPoolExecutor2() {
-        return new ThreadPoolExecutor(5,
-                10,
+        return new ThreadPoolExecutor(10,
+                20,
                 60,
                 TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(10),

@@ -10,6 +10,7 @@
     <modules>
         <module>dynamic-thread-pool-spring-boot-stater</module>
         <module>dynamic-thread-pool-test</module>
+        <module>dynamic-thread-pool-admin</module>
     </modules>
 
     <properties>
