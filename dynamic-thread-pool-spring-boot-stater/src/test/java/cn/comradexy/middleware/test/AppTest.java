@@ -1,4 +1,4 @@
-package cn.comradexy.middleware;
+package cn.comradexy.middleware.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

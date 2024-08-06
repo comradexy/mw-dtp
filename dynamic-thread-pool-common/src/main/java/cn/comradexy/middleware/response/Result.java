@@ -1,4 +1,4 @@
-package cn.comradexy.middleware.model.vo;
+package cn.comradexy.middleware.response;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

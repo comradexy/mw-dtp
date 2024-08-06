@@ -1,4 +1,4 @@
-package cn.comradexy.middleware;
+package cn.comradexy.test;
 
 import cn.comradexy.middleware.sdk.domain.DynamicThreadPoolService;
 import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
