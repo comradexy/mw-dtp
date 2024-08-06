@@ -10,12 +10,6 @@
     <artifactId>dynamic-thread-pool-admin</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <!-- 线程组件 -->
         <dependency>
@@ -62,7 +56,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>cn.comradexy.Application</mainClass>
+                    <mainClass>cn.comradexy.middleware.Application</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
