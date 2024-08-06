@@ -4,6 +4,7 @@ import cn.comradexy.middleware.response.Result;
 import cn.comradexy.middleware.entity.ThreadPoolConfigEntity;
 import cn.comradexy.middleware.valobj.RegistryEnumVO;
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.lang.StringUtils;
 import org.redisson.api.RList;
 import org.redisson.api.RTopic;
 import org.redisson.api.RedissonClient;
@@ -52,6 +53,9 @@ public class DynamicThreadPoolController {
     public Result<ThreadPoolConfigEntity> queryThreadPoolConfig(@RequestParam String appName,
                                                                 @RequestParam String threadPoolName) {
         try {
+            if(StringUtils.isBlank(appName) || StringUtils.isBlank(threadPoolName)) {
+                return Result.error("appName和threadPoolName不能为空");
+            }
             String cacheKey = RegistryEnumVO.THREAD_POOL_CONFIG_PARAMETER_LIST_KEY.getKey() +
                     RegistryEnumVO.CONNECTOR.getKey() +
                     appName +
